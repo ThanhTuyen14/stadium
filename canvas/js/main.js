@@ -1,14 +1,30 @@
 var _DATA = [];
-
+var result = [
+  {
+    key: 'section1',
+    stadium_code: 'stadium1',
+    path: 'M1142.79,362.38c44.55,7,86.32,15.83,123.51,26.18l-23.66,11.85q-28.58,0-57.48.26Z'
+  },
+  {
+    key: 'section2',
+    stadium_code: 'stadium2',
+    path: 'M1142.79,362.38c44.55,7,86.32,15.83,123.51,26.18l-23.66,11.85q-28.58,0-57.48.26Z'
+  }
+];
 $(function(){
 
   var paths = $($('#tmpPaths').html().trim()).find('path');
 
   paths.each(function(i, e) {
     var tmp = e.getAttribute('d');
-    _DATA.push(tmp);
+    _DATA.push({
+      key: 'section_' + i,
+      stadium_code: 'stadium_' + i,
+      path: tmp
+    });
   });
-  console.log(_DATA);
+
+  console.log(JSON.stringify(_DATA));
 
 
   canvas = new fabric.Canvas('stadium', { selection: false });
